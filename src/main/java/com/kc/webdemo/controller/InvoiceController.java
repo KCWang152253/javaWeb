@@ -20,7 +20,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
@@ -32,10 +31,10 @@ import java.util.*;
 
 /**
  * 发票管理
- * @author issuser
  *
+ * @author issuser
  */
-@Api(value = "发票",description = "发票操作 API", position = 100, protocols = "http")
+@Api(value = "发票", description = "发票操作 API", position = 100, protocols = "http")
 @RestController
 @RequestMapping(value = "/webcode")
 public class InvoiceController {
@@ -50,7 +49,7 @@ public class InvoiceController {
     @GetMapping("/exporInvoiceOrderXls")
     @ResponseBody
     public Object exporInvoiceOrderXls(HttpServletRequest request, HttpServletResponse response,
-                                       @RequestParam(value="invoiceOrders")@ApiParam(value="invoiceOrders") List<String>  invoiceOrders) {
+                                       @RequestParam(value = "invoiceOrders") @ApiParam(value = "invoiceOrders") List<String> invoiceOrders) {
 
 
         Map<String, Object> map = new HashMap<>();
@@ -59,18 +58,18 @@ public class InvoiceController {
 
         Map<String, Object> map2 = new HashMap<String, Object>();
         map2.put("sheetTitle", "消费记录");
-        map2.put("header", new String[]{"订单号", "商店名称", "发票批次", "账户名称", "商店地址", "刷卡账号","商店电话","信用卡开户行名称"});
-        map2.put("fields", new String[]{"invoiceOrder", "companyName", "taxNumber", "accountBank", "companyAddress","bankNumber","companyTelephone","accountName"});
+        map2.put("header", new String[]{"订单号", "商店名称", "发票批次", "账户名称", "商店地址", "刷卡账号", "商店电话", "信用卡开户行名称"});
+        map2.put("fields", new String[]{"invoiceOrder", "companyName", "taxNumber", "accountBank", "companyAddress", "bankNumber", "companyTelephone", "accountName"});
 
-        List<InvoiceOrder> invoiceOrderss = InvoiceOrderService.queryInvoiceLists(invoiceOrders,0,9999);
-        map2.put("data",invoiceOrderss);
+        List<InvoiceOrder> invoiceOrderss = InvoiceOrderService.queryInvoiceLists(invoiceOrders, 0, 9999);
+        map2.put("data", invoiceOrderss);
         List<Map<String, Object>> list = new ArrayList<>();
         list.add(map2);
 
         String title = "日常消费刷卡发票记录";
 
         Map<String, short[]> mergedRegion = new HashMap<String, short[]>();
-        mergedRegion.put("通用标题名称合并", new short[] {0, 0, 0, 100});
+        mergedRegion.put("通用标题名称合并", new short[]{0, 0, 0, 100});
 
         ExportExcel<InvoiceOrder> ex = new ExportExcel<>();
 
@@ -94,7 +93,7 @@ public class InvoiceController {
 //            response.addHeader("Content-Disposition",
 //                    "attachment;filename=" + URLEncoder.encode(title, "GBK") + date
 //                            + ".xls");
-            response.setHeader("Content-Disposition", "attachment; filename=" + new String((title+".xls").getBytes("GB2312"),"ISO8859-1"));
+            response.setHeader("Content-Disposition", "attachment; filename=" + new String((title + ".xls").getBytes("GB2312"), "ISO8859-1"));
 
 
             list.forEach(m -> {
@@ -119,11 +118,11 @@ public class InvoiceController {
                 workbook.write(out);
             } catch (IOException e) {
                 e.printStackTrace();
-            }finally {
+            } finally {
                 out.close();
             }
 
-            map.put("state","0");
+            map.put("state", "0");
             map.put("message", "导出成功");
             return map;
         } catch (IOException e) {
