@@ -1,1 +1,37 @@
 
+
+
+
+
+
+#数据库的配置
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    #?serverTimezone=UTC解决时区的报错
+    url: jdbc:mysql://localhost:3306/mydb2?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8
+    username: root
+    password: kcwang
+
+
+
+#mybatis的配置
+mybatis:
+  configuration:
+    #   sql日志显示，这里使用标准显示
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    #  数据库中如果有类似 如  user_name 等命名，会将 _后的字母大写，这里是为了和实体类对应
+    map-underscore-to-camel-case: true
+  #  配置mapper文件的路径
+  mapper-locations: classpath:mybatis/mapper/*.xml # 接口的配置文件的位置 我这里接口配置文件是UserMapper.xml
+  type-aliases-package: com.kc.webdemo.bean # 给pojo实体类起别名
+
+
+#pageHelper配置分页（官网推荐配置）
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql
+
+
