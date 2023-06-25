@@ -90,10 +90,10 @@ public class InvoiceController {
             // 导出文件名称添加当前时间
             String date = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date());
             //防止乱码
-            response.addHeader("Access-Control-Expose-Headers", "Content-Type,Content-Disposition");
-            response.addHeader("Content-Disposition",
-                    "attachment;filename=" + URLEncoder.encode(title, "GBK") + date
-                            + ".xls");
+//            response.addHeader("Access-Control-Expose-Headers", "Content-Type,Content-Disposition");
+//            response.addHeader("Content-Disposition",
+//                    "attachment;filename=" + URLEncoder.encode(title, "GBK") + date
+//                            + ".xls");
             response.setHeader("Content-Disposition", "attachment; filename=" + new String((title+".xls").getBytes("GB2312"),"ISO8859-1"));
 
 
