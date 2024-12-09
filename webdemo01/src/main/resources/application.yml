@@ -7,6 +7,8 @@ server:
 
 #数据库的配置
 spring:
+  application:
+    name: webdemo01
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     #?serverTimezone=UTC解决时区的报错
@@ -35,4 +37,23 @@ pagehelper:
   supportMethodsArguments: true
   params: count=countSql
 
+
+
+
+
+# nacos相关配置
+nacos:
+  discovery:
+    server-addr: 127.0.0.1:8848
+    #是否将本应用注册到nacos服务列表，默认是false
+    auto-register: true
+    #本服务所属的命名空间的ID，默认是空，也就是public
+    namespace: c91a7f69-cefc-4ee3-8350-07ab87affd05
+    register:
+      #本服务是否接受外部的请求，默认true
+      enabled: true
+      #本服务要注册到命名空间下的哪个组，默认DEFAULT_GROUP
+      group-name: DEFAULT_GROUP
+      #服务的名称，会展示在nacos服务列表，要求唯一，可以不写，默认是spring.application.name的值
+      service-name:
 

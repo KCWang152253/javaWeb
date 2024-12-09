@@ -88,6 +88,13 @@
 			<version>2.2.2</version>
 		</dependency>
 
+		<!--nacos-->
+
+		<dependency>
+			<groupId>com.alibaba.boot</groupId>
+			<artifactId>nacos-discovery-spring-boot-starter</artifactId>
+			<version>0.2.10</version>
+		</dependency>
 
 	</dependencies>
 
