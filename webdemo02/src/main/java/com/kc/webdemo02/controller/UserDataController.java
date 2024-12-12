@@ -2,6 +2,8 @@ package com.kc.webdemo02.controller;
 
 import com.kc.webdemo02.bean.UserData;
 import com.kc.webdemo02.mapper.UserDataMapper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -16,6 +18,8 @@ import java.util.List;
 
 @RestController
 public class UserDataController {
+
+    public static final Logger log = LoggerFactory.getLogger(UserDataController.class);
 
     @Resource
     private UserDataMapper userDataMapper;
@@ -53,6 +57,22 @@ public class UserDataController {
     public String deleteUser(){
         userDataMapper.deleteUser(1);
         return "删除成功";
+    }
+
+
+
+    @GetMapping("/info")
+    public String infoLog(String logs) {
+        log.info("[webdemo01-info:]"+logs);
+        return logs;
+    }
+
+
+    @GetMapping("/error")
+    public String errorLog(String logs) {
+        log.info("[webdemo01-error:]"+logs);
+        int i = 1/0;
+        return logs;
     }
 }
 

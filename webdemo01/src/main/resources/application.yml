@@ -57,3 +57,9 @@ nacos:
       #服务的名称，会展示在nacos服务列表，要求唯一，可以不写，默认是spring.application.name的值
       service-name:
 
+
+logging:
+  config: classpath:logback-spring.xml
+  file-location: /Users/kcwang/elk
+
+
