@@ -295,8 +295,9 @@ public class Producer {
         long prevMaxRT = statsBenchmark.getSendMessageMaxRT().longValue();
         while (currentRT > prevMaxRT) {
             boolean updated = statsBenchmark.getSendMessageMaxRT().compareAndSet(prevMaxRT, currentRT);
-            if (updated)
+            if (updated) {
                 break;
+            }
 
             prevMaxRT = statsBenchmark.getSendMessageMaxRT().longValue();
         }

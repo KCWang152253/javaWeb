@@ -64,7 +64,7 @@ logging:
 
 
 rocketmq:
-  name-server: localhost9876;  #nameserver IP地址
+  name-server: localhost:9876;  #nameserver IP地址
   producer:
     group: TEST_GROUP # 指定group
     send-message-timeout: 3000 # 消息发送超时时长，默认3s
