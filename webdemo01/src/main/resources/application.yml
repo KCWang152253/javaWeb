@@ -9,6 +9,16 @@ server:
 spring:
   application:
     name: webdemo01
+  redis:
+    host: localhost
+    port: 6379
+    password: 123456
+    database: 0
+    lettuce:
+      pool:
+        max-idle: 16
+        max-active: 32
+        min-idle: 8
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     #?serverTimezone=UTC解决时区的报错
@@ -70,3 +80,9 @@ rocketmq:
     send-message-timeout: 3000 # 消息发送超时时长，默认3s
     retry-times-when-send-failed: 3 # 同步发送消息失败重试次数，默认2
     retry-times-when-send-async-failed: 3 # 异步发送消息失败重试次数，默认2
+
+
+
+
+
+
