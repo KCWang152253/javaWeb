@@ -11,5 +11,13 @@
 
     <artifactId>webdemo02</artifactId>
 
+    <dependencies>
+        <!--接口工程-->
+        <dependency>
+            <groupId>com.kc</groupId>
+            <artifactId>webdemo-common-sdk</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
 
 </project>

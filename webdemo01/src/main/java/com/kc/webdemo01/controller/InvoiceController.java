@@ -1,8 +1,6 @@
 package com.kc.webdemo01.controller;
 
-import com.kc.webdemo01.bean.ExcelModel;
 import com.kc.webdemo01.bean.ExportExcel;
-import com.kc.webdemo01.bean.InvoiceOrder;
 import com.kc.webdemo01.service.invoiceOrderService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -61,7 +59,7 @@ public class InvoiceController {
         map2.put("header", new String[]{"订单号", "商店名称", "发票批次", "账户名称", "商店地址", "刷卡账号", "商店电话", "信用卡开户行名称"});
         map2.put("fields", new String[]{"invoiceOrder", "companyName", "taxNumber", "accountBank", "companyAddress", "bankNumber", "companyTelephone", "accountName"});
 
-        List<InvoiceOrder> invoiceOrderss = InvoiceOrderService.queryInvoiceLists(invoiceOrders, 0, 9999);
+        List<com.kc.webdemo01.bean.InvoiceOrder> invoiceOrderss = InvoiceOrderService.queryInvoiceLists(invoiceOrders, 0, 9999);
         map2.put("data", invoiceOrderss);
         List<Map<String, Object>> list = new ArrayList<>();
         list.add(map2);
@@ -71,7 +69,7 @@ public class InvoiceController {
         Map<String, short[]> mergedRegion = new HashMap<String, short[]>();
         mergedRegion.put("通用标题名称合并", new short[]{0, 0, 0, 100});
 
-        ExportExcel<InvoiceOrder> ex = new ExportExcel<>();
+        ExportExcel<com.kc.webdemo01.bean.InvoiceOrder> ex = new ExportExcel<>();
 
         // 声明一个工作薄
         HSSFWorkbook workbook = new HSSFWorkbook();
@@ -97,7 +95,7 @@ public class InvoiceController {
 
 
             list.forEach(m -> {
-                ExcelModel excelModel = new ExcelModel();
+                com.kc.webdemo01.bean.ExcelModel excelModel = new com.kc.webdemo01.bean.ExcelModel();
                 excelModel.setWorkbook(workbook);
                 excelModel.setTitle(title);
                 excelModel.setFields((String[]) m.get("fields"));
@@ -111,7 +109,7 @@ public class InvoiceController {
                 // 生成一页表格
                 HSSFSheet sheet = workbook.createSheet((String) m.get("sheetTitle"));
                 excelModel.setSheet(sheet);
-                ex.exportExcel(excelModel, (Collection<InvoiceOrder>) m.get("data"));
+                ex.exportExcel(excelModel, (Collection<com.kc.webdemo01.bean.InvoiceOrder>) m.get("data"));
             });
 
             try {

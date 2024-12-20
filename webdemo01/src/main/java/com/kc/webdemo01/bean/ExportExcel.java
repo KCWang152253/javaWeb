@@ -17,7 +17,7 @@ import java.util.*;
  * @param <T>
  */
 @Data
-public class ExportExcel<T> extends ExcelModel {
+public class ExportExcel<T> extends com.kc.webdemo01.bean.ExcelModel {
     /**
      *
      * @Title: exportExcel
@@ -38,7 +38,7 @@ public class ExportExcel<T> extends ExcelModel {
      * @param pattern 如果有时间数据，设定输出格式。默认为"yyy-MM-dd"
      * @return: void
      */
-    public void exportExcel(ExcelModel excelModel, Collection<T> dataset) {
+    public void exportExcel(com.kc.webdemo01.bean.ExcelModel excelModel, Collection<T> dataset) {
 
         HSSFSheet sheet = excelModel.getSheet();
         // 产生表格标题行
@@ -106,7 +106,7 @@ public class ExportExcel<T> extends ExcelModel {
      * @param dataset
      * @return: ExcelModel
      */
-    public ExcelModel insertData(ExcelModel excelModel, Collection<T> dataset) {
+    public com.kc.webdemo01.bean.ExcelModel insertData(com.kc.webdemo01.bean.ExcelModel excelModel, Collection<T> dataset) {
         Iterator<T> it = dataset.iterator();
         int index = excelModel.getIndex();
         int totalCell = excelModel.getTotalCell();
@@ -193,7 +193,7 @@ public class ExportExcel<T> extends ExcelModel {
         excelModel.setMergedRegion(mergedRegion);
         return excelModel;
     }
-    public boolean setValue(Object value, ExcelModel excelModel, HSSFCell cell, int totalCell, HSSFSheet sheet, HSSFRow row, String fieldName ) {
+    public boolean setValue(Object value, com.kc.webdemo01.bean.ExcelModel excelModel, HSSFCell cell, int totalCell, HSSFSheet sheet, HSSFRow row, String fieldName ) {
         if (value != null) {
             if (excelModel.getHeaders() != null) {
                 if (value.toString().length() > excelModel.getHeader()[totalCell - 1].toString()
