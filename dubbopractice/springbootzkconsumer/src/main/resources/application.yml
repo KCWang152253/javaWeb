@@ -1,5 +1,7 @@
 
 dubbo:
+  consumer:
+    timeout: 50000
   application:
     #application-name 本模块名字
     name: springboot-zk-consumer
