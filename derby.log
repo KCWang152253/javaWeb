@@ -1,7 +1,7 @@
 ----------------------------------------------------------------
-Fri Dec 20 22:45:46 CST 2024:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-0193-e488-09f7-00001c5f9318 
-on database directory memory:/Users/kcwang/javaWeb/93a35138-a46e-4f3f-8a82-282bd2996804 with class loader sun.misc.Launcher$AppClassLoader@18b4aac2 
+Sun Dec 22 21:46:44 CST 2024:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-0193-ee9e-b428-00001b88ab98 
+on database directory memory:/Users/kcwang/javaWeb/0b9e0264-531f-4078-98d3-06db1d68c707 with class loader sun.misc.Launcher$AppClassLoader@18b4aac2 
 Loaded from file:/Users/kcwang/repository/org/apache/derby/derby/10.14.2.0/derby-10.14.2.0.jar
 java.vendor=Oracle Corporation
 java.runtime.version=1.8.0_241-b07
