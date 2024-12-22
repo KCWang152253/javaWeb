@@ -57,11 +57,14 @@ public class MQProducerService {
             @Override
             public void onSuccess(SendResult sendResult) {
                 //发送成功处理...
+                System.out.println("发送成功处理");
             }
 
             @Override
             public void onException(Throwable throwable) {
                 //发送失败处理...
+                System.out.println("发送失败处理");
+
 
             }
         });
