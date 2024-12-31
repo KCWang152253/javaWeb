@@ -87,7 +87,7 @@ spring:
 
 management:
   server:
-    # 这个端口还prometheus来抓取的端口, 也就是业务方把监控数据暴露的端口
+    # 这个端口是prometheus来抓取的端口, 也就是业务方把监控数据暴露的端口
     port: 9001
   #  开启 actator 服务
   endpoints:
