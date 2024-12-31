@@ -114,16 +114,24 @@ management:
 
 
 
-#mybatis的配置
-mybatis:
+
+
+
+# mybatis-plus的配置   混用mybatis和mybatisplus 可能会出现InvalidBoundStatement错误  删除Mybatis的相关配置，包括config类。MybatisPlus实际上集成了Mybatis，只需正确配置MybatisPlus即可避免冲
+mybatis-plus:
+  mapperLocations:
   configuration:
     #   sql日志显示，这里使用标准显示
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
     #  数据库中如果有类似 如  user_name 等命名，会将 _后的字母大写，这里是为了和实体类对应
     map-underscore-to-camel-case: true
-  #  配置mapper文件的路径
-  mapper-locations: classpath:mybatis/mapper/*.xml # 接口的配置文件的位置 我这里接口配置文件是UserMapper.xml
-  type-aliases-package: com.kc.webdemo.bean # 给pojo实体类起别名
+    #  配置mapper文件的路径
+    # 接口的配置文件的位置 我这里接口配置文件是UserMapper.xml
+  mapper-locations: classpath:mybatis/mapper/*.xml,classpath:mapper/**/*.xml,classpath:/mybatis-plus/*.xml
+    # 给pojo实体类起别名
+  type-aliases-package: com.kc.webdemo01.bean
+
+
 
 
 #pageHelper配置分页（官网推荐配置）
