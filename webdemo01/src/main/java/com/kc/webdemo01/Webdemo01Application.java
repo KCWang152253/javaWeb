@@ -19,7 +19,9 @@ public class Webdemo01Application {
 	}
 
 
-
+	/**
+	 * 监控
+	 */
 	@Bean
 	MeterRegistryCustomizer<MeterRegistry> configurer(
 			@Value("${spring.application.name}") String applicationName){
