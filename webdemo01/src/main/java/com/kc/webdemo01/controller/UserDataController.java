@@ -2,8 +2,10 @@ package com.kc.webdemo01.controller;
 
 import com.kc.webdemo01.bean.UserData;
 import com.kc.webdemo01.mapper.UserDataMapper;
+import com.kc.webdemo01.mapper.UserMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -23,6 +25,9 @@ public class UserDataController {
     @Resource
     private UserDataMapper userDataMapper;
 
+    @Resource
+    private UserMapper userMapper;
+
     @GetMapping("/queryUserList")
     public List<UserData> queryUserList(){
         List<UserData> userList = userDataMapper.queryUserList();
@@ -32,6 +37,17 @@ public class UserDataController {
         }
         return userList;
     }
+
+    @GetMapping("/queryUserListWithMybatisPlus")
+    public List<UserData> queryUserListWithMybatisPlus(){
+        List<UserData> userList = userMapper.selectList(null);
+
+        for(UserData user:userList){
+            System.out.println(user);
+        }
+        return userList;
+    }
+
 
     @GetMapping("/queryUserById")
     public UserData queryUserById(){

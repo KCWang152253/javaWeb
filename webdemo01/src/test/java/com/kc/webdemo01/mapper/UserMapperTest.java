@@ -14,20 +14,21 @@ import java.util.List;
 /**
  * @author KCWang
  * @version 1.0
- * @date 2024/12/31 下午5:35
+ * @date 2025/1/1 上午10:30
  */
 @SpringBootTest(classes = Webdemo01Application.class)
 @RunWith(SpringRunner.class)
-public class UserDataMapperTest extends TestCase {
+public class UserMapperTest extends TestCase {
+
 
     @Resource
-    private UserDataMapper userDataMapper;
+    private UserMapper userMapper;
 
 
     @Test
     public void testQueryUserList() {
-        System.out.println(("----- selectAll method test ------"));
-        List<UserData> userList = userDataMapper.queryUserList();
+        System.out.println(("----- selectAll method test --queryUserListWithMybatisPlus----"));
+        List<UserData> userList = userMapper.selectList(null);
 //        Assert.assertEquals(5, userList.size());
         userList.forEach(System.out::println);
 
