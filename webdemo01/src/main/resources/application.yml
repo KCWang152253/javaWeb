@@ -178,6 +178,7 @@ rocketmq:
 
 
 
+#openFeign的默认的http调用方式是JDK原生HttpURLConnection，缺乏线程池和自定义调用参数等设置。可以选择第三方客户端HttpClient，如果需要使用HttpClient做服务调用的客户端，需要引入Httpclient依赖。
 # 开启HttpClient
 feign:
   # 禁用OkHttp
@@ -190,4 +191,9 @@ feign:
   httpclien:
     enabled: true
 
-
+#Ribbon start  openFeign集成了Ribbon，默认支持Ribbon进行负责均衡，直接在properties文件中加上对应参数即可。
+#请求时间5秒
+ribbon:
+  ReadTimeout: 5000
+  #连接时间5秒
+  ConnectTimeout: 5000
