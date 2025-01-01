@@ -26,6 +26,9 @@ public class UserDataController {
 
     @GetMapping("/queryUserList")
     public List<UserData> queryUserList(){
+
+        log.info("*******webdemo02***--》服务收到请求*****");
+
         List<UserData> userList = userDataMapper.queryUserList();
 
         for(UserData user:userList){

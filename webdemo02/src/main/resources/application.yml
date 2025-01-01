@@ -19,7 +19,7 @@ spring:
 
 
 #mybatis的配置
-mybatis:
+mybatis-plus:
   configuration:
     #   sql日志显示，这里使用标准显示
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl

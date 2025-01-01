@@ -178,5 +178,16 @@ rocketmq:
 
 
 
+# 开启HttpClient
+feign:
+  # 禁用OkHttp
+  okhttp:
+    enabled: false
+  # 使用HttpClient 5（Apache HttpClient 5）
+  httpclient:
+    hc5:
+      enabled: false
+  httpclien:
+    enabled: true
 
 
