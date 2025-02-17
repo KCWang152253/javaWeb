@@ -7,12 +7,16 @@ server:
 
 #数据库的配置
 spring:
+  cache:
+    # 或者其他支持的缓存类型，如REDIS, CAFFEINE等
+    type: redis
   application:
     name: webdemo01
   redis:
     host: localhost
     port: 6379
-#    password: kcwang
+    timeout: 2000
+    #    password: kcwang
     database: 0
     lettuce:
       pool:
