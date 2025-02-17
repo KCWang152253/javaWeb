@@ -7,6 +7,7 @@ package com.kc.webdemo01.config;
  * 初始化redis做数据缓存
  * @date 2024/12/17 下午10:34
  */
+
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -22,10 +23,8 @@ import org.springframework.data.redis.cache.RedisCacheConfiguration;
 import org.springframework.data.redis.cache.RedisCacheManager;
 import org.springframework.data.redis.cache.RedisCacheWriter;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
-import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.serializer.GenericJackson2JsonRedisSerializer;
-import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
 import org.springframework.data.redis.serializer.RedisSerializer;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
 
@@ -37,14 +36,13 @@ import java.time.Duration;
 public class RedisConfig extends CachingConfigurerSupport {
 
 
+    private static int OverTime = 120;
     @Value("${spring.redis.host}")
     private String host;
     @Value("${spring.redis.port}")
     private int port;
     @Value("${spring.redis.timeout}")
     private int timeout;
-
-    private static int OverTime = 120;
 
 
 //    @Bean(name = "redisTemplate")
@@ -73,7 +71,6 @@ public class RedisConfig extends CachingConfigurerSupport {
 //        return redisTemplate;
 //    }
 
-
     @Bean(name = "redisTemplate")
     public RedisTemplate<String, Object> redisTemplate(RedisConnectionFactory redisConnectionFactory) {
         RedisTemplate<String, Object> redisTemplate = new RedisTemplate<>();
@@ -97,7 +94,8 @@ public class RedisConfig extends CachingConfigurerSupport {
 
     /**
      * 设置RedisTemplate的序列化器。
-     * @param connectionFactory
+     *
+     * @param
      * @return
      */
 //    @Bean(name = "redisTemplate")
@@ -110,7 +108,6 @@ public class RedisConfig extends CachingConfigurerSupport {
 //        redisTemplate.setHashKeySerializer(stringRedisSerializer);
 //        return redisTemplate;
 //    }
-
     @Bean
     public RedisSerializer<Object> redisSerializer() {
         //创建JSON序列化器
@@ -130,13 +127,13 @@ public class RedisConfig extends CachingConfigurerSupport {
     @Override
     @Bean
     public KeyGenerator keyGenerator() {
-        return new KeyGenerator(){
+        return new KeyGenerator() {
             @Override
             public Object generate(Object target, java.lang.reflect.Method method, Object... params) {
                 StringBuffer sb = new StringBuffer();
                 sb.append(target.getClass().getName());
                 sb.append(method.getName());
-                for(Object obj:params){
+                for (Object obj : params) {
                     sb.append(obj.toString());
                 }
                 return sb.toString();
@@ -148,7 +145,10 @@ public class RedisConfig extends CachingConfigurerSupport {
     /**
      * 缓存管理器(注意：此方法在SpringBoot2.0以下版本才有效，2.0以后得版本参照
      * https://blog.csdn.net/Mirt_/article/details/80934312 来写)
-     * @param redisTemplate
+     * <p>
+     * CacheManager缓存管理器‌在Spring框架中是一个抽象层，允许开发者绑定不同的缓存解决方案，如Ehcache、Caffeine等，
+     * 而不直接提供缓存功能的实现。它支持注解方式使用缓存，非常方便‌
+     *
      * @return
      */
 //    @Bean
@@ -157,7 +157,6 @@ public class RedisConfig extends CachingConfigurerSupport {
 //        cacheManager.setDefaultExpiration(OverTime); // 设置缓存过期时间
 //        return cacheManager;
 //    }
-
     @Bean
     public CacheManager cacheManager(RedisConnectionFactory redisConnectionFactory) {
         RedisCacheConfiguration redisCacheConfiguration = RedisCacheConfiguration.defaultCacheConfig()
@@ -172,14 +171,13 @@ public class RedisConfig extends CachingConfigurerSupport {
 
     /**
      * RedisTemplate序列化器之GenericJackson2JsonRedisSerializer
+     *
      * @return
      */
     @Bean(name = "springSessionDefaultRedisSerializer")
     public GenericJackson2JsonRedisSerializer getGenericJackson2JsonRedisSerializer() {
         return new GenericJackson2JsonRedisSerializer();
     }
-
-
 
 
 }
