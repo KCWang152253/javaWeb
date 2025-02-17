@@ -24,6 +24,10 @@ public class Webdemo01Application {
 		 *
 
 		 启动：
+		 1、Nacos    com.alibaba.nacos
+		 2、BrokerStartup   org.apache.rocketmq.broker
+		 3、NamesrvStartup org.apache.rocketmq.namesrv
+
 
 
 		 */
