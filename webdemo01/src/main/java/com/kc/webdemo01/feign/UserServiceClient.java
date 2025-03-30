@@ -11,7 +11,8 @@ import java.util.List;
  * @version 1.0
  * @date 2025/1/1 上午10:44
  */
-@FeignClient(name = "webdemo02",url = "http://localhost:8082")
+//@FeignClient(name = "webdemo02",url = "http://localhost:8082",contextId = "webdemo02",configuration = UserConfiguration.class)
+@FeignClient(name = "webdemo02",url = "http://localhost:8082",contextId = "webdemo02")
 public interface UserServiceClient {
 
 
